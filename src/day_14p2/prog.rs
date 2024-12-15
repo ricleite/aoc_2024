@@ -120,10 +120,24 @@ To determine the safest area, count the number of robots in each quadrant after 
 In this example, the quadrants contain 1, 3, 4, and 1 robot. Multiplying these together gives a total safety factor of 12.
 
 Predict the motion of the robots in your list within a space which is 101 tiles wide and 103 tiles tall. What will the safety factor be after exactly 100 seconds have elapsed?
+
+Your puzzle answer was 226548000.
+
+The first half of this puzzle is complete! It provides one gold star: *
+--- Part Two ---
+
+During the bathroom break, someone notices that these robots seem awfully similar to ones built and used at the North Pole. If they're the same type of robots, they should have a hard-coded Easter egg: very rarely, most of the robots should arrange themselves into a picture of a Christmas tree.
+
+What is the fewest number of seconds that must elapse for the robots to display the Easter egg?
  */
 
+use std::collections::HashSet;
 use std::io::{self, BufRead};
 use regex::Regex;
+
+fn pack(x: &i32, y: &i32) -> i64 {
+    return (*x as i64) << 32 | (*y as i64 & 0xFFFFFFFF);
+}
 
 fn main() {
     let lines: Vec<String> = io::stdin().lock().lines().map(|s| s.unwrap()).collect();
@@ -141,9 +155,49 @@ fn main() {
         }
     }
 
-    // advance positions 100 times
-    // bit primite, but can modify `robots` directly, no need to keep original values
-    for _ in 0..100 {
+    let mut max_score = 0;
+    let mut max_score_idx = 0;
+
+    let print_idx = 100000; // change to print this particular idx
+    for i in 0..10000 {
+        // building a set for each iteration is horribly expensive
+        // but makes scoring quite easy
+        let mut set: HashSet<i64> = HashSet::new();
+        for (x, y, _, _) in &robots {
+            let v = pack(x, y);
+            set.insert(v);
+        }
+
+        let mut score = 0;
+        for (x, y, _, _) in &robots {
+            for (dx, dy) in vec![(1, 1), (-1, -1), (-1, 1), (1, -1)] {
+                let v = pack(&(x + dx), &(y + dy));
+                if set.contains(&v) {
+                    score += 1;
+                }
+            }
+        } 
+
+        if max_score < score {
+            max_score = score;
+            max_score_idx = i;
+        }
+
+        // of course, some debug print code
+        if i == print_idx {
+            for x in 0..max_x {
+                for y in 0..max_y {
+                    let v = pack(&x, &y);
+                    if set.contains(&v) {
+                        print!("X");
+                    } else {
+                        print!(".");
+                    }
+                }
+                println!("");
+            }
+        }
+
         for (x, y, dx, dy) in &mut robots {
             // see https://stackoverflow.com/questions/31210357/is-there-a-modulus-not-remainder-function-operation
             *x += *dx;
@@ -153,21 +207,5 @@ fn main() {
         }
     }
 
-    let mut quads = vec![0, 0, 0, 0];
-    // calculate quads
-    for (x, y, _, _) in &robots {
-        if x * 2 == max_x - 1 || y * 2 == max_y - 1 {
-            continue;
-        }
-
-        let idx = (x * 2 / max_x) + 2 * (y * 2 / max_y);
-        quads[idx as usize] += 1;
-    }
-
-    let mut res = 1;
-    for q in &quads {
-        res *= q;
-    }
-
-    println!("{}", res);
+    println!("{}, {}", max_score, max_score_idx);
 }
