@@ -1,0 +1,52 @@
+[package]
+name = "aoc_2024"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "day01_p1"
+path = "src/day_01p1/prog.rs"
+
+[[bin]]
+name = "day01_p2"
+path = "src/day_01p2/prog.rs"
+
+[[bin]]
+name = "day02_p1"
+path = "src/day_02p1/prog.rs"
+
+[[bin]]
+name = "day02_p2"
+path = "src/day_02p2/prog.rs"
+
+[[bin]]
+name = "day03_p1"
+path = "src/day_03p1/prog.rs"
+
+[[bin]]
+name = "day03_p2"
+path = "src/day_03p2/prog.rs"
+
+[[bin]]
+name = "day04_p1"
+path = "src/day_04p1/prog.rs"
+
+[[bin]]
+name = "day04_p2"
+path = "src/day_04p2/prog.rs"
+
+[[bin]]
+name = "day05_p1"
+path = "src/day_05p1/prog.rs"
+
+[[bin]]
+name = "day05_p2"
+path = "src/day_05p2/prog.rs"
+
+# gap, did not do these days yet
+
+[[bin]]
+name = "day14_p1"
+path = "src/day_14p1/prog.rs"
