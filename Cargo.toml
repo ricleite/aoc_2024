@@ -88,3 +88,20 @@ path = "src/day_17p1/prog.rs"
 name = "day17_p2"
 path = "src/day_17p2/prog.rs"
 
+[[bin]]
+name = "day18_p1"
+path = "src/day_18p1/prog.rs"
+
+[[bin]]
+name = "day18_p2"
+path = "src/day_18p2/prog.rs"
+
+# gap, did not do these days yet
+
+[[bin]]
+name = "day20_p1"
+path = "src/day_20p1/prog.rs"
+
+[[bin]]
+name = "day20_p2"
+path = "src/day_20p2/prog.rs"
