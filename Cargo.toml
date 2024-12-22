@@ -49,6 +49,14 @@ path = "src/day_05p2/prog.rs"
 # gap, did not do these days yet
 
 [[bin]]
+name = "day_10p1"
+path = "src/day_10p1/prog.rs"
+
+[[bin]]
+name = "day_10p2"
+path = "src/day_10p2/prog.rs"
+
+[[bin]]
 name = "day_11p1"
 path = "src/day_11p1/prog.rs"
 
