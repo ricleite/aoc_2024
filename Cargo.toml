@@ -7,101 +7,119 @@ edition = "2021"
 regex = "1.11.1"
 
 [[bin]]
-name = "day01_p1"
+name = "day_01p1"
 path = "src/day_01p1/prog.rs"
 
 [[bin]]
-name = "day01_p2"
+name = "day_01p2"
 path = "src/day_01p2/prog.rs"
 
 [[bin]]
-name = "day02_p1"
+name = "day_02p1"
 path = "src/day_02p1/prog.rs"
 
 [[bin]]
-name = "day02_p2"
+name = "day_02p2"
 path = "src/day_02p2/prog.rs"
 
 [[bin]]
-name = "day03_p1"
+name = "day_03p1"
 path = "src/day_03p1/prog.rs"
 
 [[bin]]
-name = "day03_p2"
+name = "day_03p2"
 path = "src/day_03p2/prog.rs"
 
 [[bin]]
-name = "day04_p1"
+name = "day_04p1"
 path = "src/day_04p1/prog.rs"
 
 [[bin]]
-name = "day04_p2"
+name = "day_04p2"
 path = "src/day_04p2/prog.rs"
 
 [[bin]]
-name = "day05_p1"
+name = "day_05p1"
 path = "src/day_05p1/prog.rs"
 
 [[bin]]
-name = "day05_p2"
+name = "day_05p2"
 path = "src/day_05p2/prog.rs"
 
 # gap, did not do these days yet
 
 [[bin]]
-name = "day13_p1"
+name = "day_13p1"
 path = "src/day_13p1/prog.rs"
 
 [[bin]]
-name = "day13_p2"
+name = "day_13p2"
 path = "src/day_13p2/prog.rs"
 
 [[bin]]
-name = "day14_p1"
+name = "day_14p1"
 path = "src/day_14p1/prog.rs"
 
 [[bin]]
-name = "day14_p2"
+name = "day_14p2"
 path = "src/day_14p2/prog.rs"
 
 [[bin]]
-name = "day15_p1"
+name = "day_15p1"
 path = "src/day_15p1/prog.rs"
 
 [[bin]]
-name = "day15_p2"
+name = "day_15p2"
 path = "src/day_15p2/prog.rs"
 
 [[bin]]
-name = "day16_p1"
+name = "day_16p1"
 path = "src/day_16p1/prog.rs"
 
 [[bin]]
-name = "day16_p2"
+name = "day_16p2"
 path = "src/day_16p2/prog.rs"
 
 [[bin]]
-name = "day17_p1"
+name = "day_17p1"
 path = "src/day_17p1/prog.rs"
 
 [[bin]]
-name = "day17_p2"
+name = "day_17p2"
 path = "src/day_17p2/prog.rs"
 
 [[bin]]
-name = "day18_p1"
+name = "day_18p1"
 path = "src/day_18p1/prog.rs"
 
 [[bin]]
-name = "day18_p2"
+name = "day_18p2"
 path = "src/day_18p2/prog.rs"
 
-# gap, did not do these days yet
+[[bin]]
+name = "day_19p1"
+path = "src/day_19p1/prog.rs"
 
 [[bin]]
-name = "day20_p1"
+name = "day_19p2"
+path = "src/day_19p2/prog.rs"
+
+[[bin]]
+name = "day_20p1"
 path = "src/day_20p1/prog.rs"
 
 [[bin]]
-name = "day20_p2"
+name = "day_20p2"
 path = "src/day_20p2/prog.rs"
+
+[[bin]]
+name = "day_21p1"
+path = "src/day_21p1/prog.rs"
+
+[[bin]]
+name = "day_21p2"
+path = "src/day_21p2/prog.rs"
+
+[[bin]]
+name = "day_21p2_helper"
+path = "src/day_21p2/helper.rs"
