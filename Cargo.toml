@@ -53,6 +53,10 @@ name = "day_09p1"
 path = "src/day_09p1/prog.rs"
 
 [[bin]]
+name = "day_09p2"
+path = "src/day_09p2/prog.rs"
+
+[[bin]]
 name = "day_10p1"
 path = "src/day_10p1/prog.rs"
 

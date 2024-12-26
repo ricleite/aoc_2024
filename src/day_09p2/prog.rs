@@ -51,6 +51,26 @@ The final step of this file-compacting process is to update the filesystem check
 Continuing the first example, the first few blocks' position multiplied by its file ID number are 0 * 0 = 0, 1 * 0 = 0, 2 * 9 = 18, 3 * 9 = 27, 4 * 8 = 32, and so on. In this example, the checksum is the sum of these, 1928.
 
 Compact the amphipod's hard drive using the process he requested. What is the resulting filesystem checksum? (Be careful copy/pasting the input for this puzzle; it is a single, very long line.)
+
+--- Part Two ---
+
+Upon completion, two things immediately become clear. First, the disk definitely has a lot more contiguous free space, just like the amphipod hoped. Second, the computer is running much more slowly! Maybe introducing all of that file system fragmentation was a bad idea?
+
+The eager amphipod already has a new plan: rather than move individual blocks, he'd like to try compacting the files on his disk by moving whole files instead.
+
+This time, attempt to move whole files to the leftmost span of free space blocks that could fit the file. Attempt to move each file exactly once in order of decreasing file ID number starting with the file with the highest file ID number. If there is no span of free space to the left of a file that is large enough to fit the file, the file does not move.
+
+The first example from above now proceeds differently:
+
+00...111...2...333.44.5555.6666.777.888899
+0099.111...2...333.44.5555.6666.777.8888..
+0099.1117772...333.44.5555.6666.....8888..
+0099.111777244.333....5555.6666.....8888..
+00992111777.44.333....5555.6666.....8888..
+
+The process of updating the filesystem checksum is the same; now, this example's checksum would be 2858.
+
+Start over, now compacting the amphipod's hard drive using this new method instead. What is the resulting filesystem checksum?
 */
 
 use std::env;
@@ -96,31 +116,11 @@ fn main() {
                     size1 -= size2;
                     map[j].0 = u32::MAX;
                     map[j].2 = 0;
-                } else {
-                    new_map.push((id2, start_pos1, size1));
-                    map[j].2 -= size1;
-                    start_pos1 += size1;
-                    size1 -= size1;
-                }
-
-                if size1 == 0 {
-                    break;
+                    if size1 == 0 {
+                        break;
+                    }
                 }
             }
-        }
-    }
-
-    map = new_map;
-
-    // remove all free space, fix all of the poss
-    let mut pos: usize = 0;
-    let mut new_map: Vec<(u32, usize, usize)> = Vec::new();
-    for (id, _, size) in &map {
-        if *id == u32::MAX {
-            continue;
-        } else {
-            new_map.push((*id, pos, *size));
-            pos += *size;
         }
     }
 
