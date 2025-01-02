@@ -61,9 +61,6 @@ Your first task is to determine what the program is trying to output. To do this
 
 Using the information provided by the debugger, initialize the registers to the given values, then run the program. Once it halts, what do you get if you use commas to join the values it output into a single string?
 
-Your puzzle answer was 4,6,1,4,2,1,3,1,6.
-
-The first half of this puzzle is complete! It provides one gold star: *
 --- Part Two ---
 
 Digging deeper in the device's manual, you discover the problem: this program is supposed to output another copy of the program! Unfortunately, the value in register A seems to have been corrupted. You'll need to find a new value to which you can initialize register A so that the program's output instructions produce an exact copy of the program itself.

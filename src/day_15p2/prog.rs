@@ -242,9 +242,6 @@ The lanternfish would like to know the sum of all boxes' GPS coordinates after t
 
 Predict the motion of the robot and boxes in the warehouse. After the robot is finished moving, what is the sum of all boxes' GPS coordinates?
 
-Your puzzle answer was 1457740.
-
-The first half of this puzzle is complete! It provides one gold star: *
 --- Part Two ---
 
 The lanternfish use your information to find a safe moment to swim in and turn off the malfunctioning robot! Just as they start preparing a festival in your honor, reports start coming in that a second warehouse's robot is also malfunctioning.
