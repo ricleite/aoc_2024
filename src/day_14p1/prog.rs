@@ -120,14 +120,18 @@ To determine the safest area, count the number of robots in each quadrant after 
 In this example, the quadrants contain 1, 3, 4, and 1 robot. Multiplying these together gives a total safety factor of 12.
 
 Predict the motion of the robots in your list within a space which is 101 tiles wide and 103 tiles tall. What will the safety factor be after exactly 100 seconds have elapsed?
- */
+*/
 
-use std::io::{self, BufRead};
+use std::env;
+use std::fs::read_to_string;
 use regex::Regex;
 
 fn main() {
-    let lines: Vec<String> = io::stdin().lock().lines().map(|s| s.unwrap()).collect();
-    let max_x = 101;
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input = read_to_string(filename).unwrap();
+    let lines: Vec<String> = input.lines().map(|s| s.to_string()).collect();
+    let max_x: i32 = 101;
     let max_y = 103;
 
     // see example in https://docs.rs/regex/latest/regex/

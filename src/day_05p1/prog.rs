@@ -77,18 +77,22 @@ These have middle page numbers of 61, 53, and 29 respectively. Adding these page
 Of course, you'll need to be careful: the actual list of page ordering rules is bigger and more complicated than the above example.
 
 Determine which updates are already in the correct order. What do you get if you add up the middle page number from those correctly-ordered updates?
- */
+*/
 
+use std::env;
 use std::fs::read_to_string;
 use std::collections::HashMap;
 use std::collections::HashSet;
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input: String = read_to_string(filename).unwrap();
+ 
     let mut rules: HashMap<u64, Vec<u64>> = HashMap::new();
     let mut rules_done = false;
     let mut updates: Vec<Vec<u64>> = Vec::new();
 
-    let input = read_to_string("input").unwrap();
     for line in input.lines() {
         // TODO: need to learn to "consume" a file properly
         if line.len() == 0 {

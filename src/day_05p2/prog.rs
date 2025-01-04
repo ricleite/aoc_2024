@@ -93,16 +93,20 @@ After taking only the incorrectly-ordered updates and ordering them correctly, t
 Find the updates which are not in the correct order. What do you get if you add up the middle page numbers after correctly ordering just those updates?
 */
 
+use std::env;
 use std::fs::read_to_string;
 use std::collections::HashMap;
 use std::collections::HashSet;
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input: String = read_to_string(filename).unwrap();
+ 
     let mut rules: HashMap<u64, Vec<u64>> = HashMap::new();
     let mut rules_done = false;
     let mut updates: Vec<Vec<u64>> = Vec::new();
 
-    let input = read_to_string("input").unwrap();
     for line in input.lines() {
         // TODO: need to learn to "consume" a file properly
         if line.len() == 0 {

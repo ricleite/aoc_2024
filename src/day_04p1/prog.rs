@@ -42,10 +42,14 @@ S.S.S.S.SS
 Take a look at the little Elf's word search. How many times does XMAS appear?
 */
 
+use std::env;
 use std::fs::read_to_string;
 
 fn main() {
-    let input = read_to_string("input").unwrap();
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input: String = read_to_string(filename).unwrap();
+ 
     let lines: Vec<&str> = input.lines().collect();
     let height = lines.len();
     let width = lines[0].len();

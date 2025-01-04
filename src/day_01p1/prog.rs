@@ -42,14 +42,19 @@ To find the total distance between the left list and the right list, add up the 
 Your actual left and right lists contain many location IDs. What is the total distance between your lists?
 */
 
+use std::env;
 use std::fs::read_to_string;
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input = read_to_string(filename).unwrap();
+
     let mut l1 = Vec::new();
     let mut l2 = Vec::new();
 
     // https://doc.rust-lang.org/rust-by-example/std_misc/file/read_lines.html
-    for line in read_to_string("input").unwrap().lines() {
+    for line in input.lines() {
         let v: Vec<&str> = line.split_whitespace().collect();
 
         l1.push(v[0].parse::<i64>().unwrap());

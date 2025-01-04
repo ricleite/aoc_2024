@@ -126,10 +126,11 @@ Predict the motion of the robots in your list within a space which is 101 tiles 
 During the bathroom break, someone notices that these robots seem awfully similar to ones built and used at the North Pole. If they're the same type of robots, they should have a hard-coded Easter egg: very rarely, most of the robots should arrange themselves into a picture of a Christmas tree.
 
 What is the fewest number of seconds that must elapse for the robots to display the Easter egg?
- */
+*/
 
+use std::env;
+use std::fs::read_to_string;
 use std::collections::HashSet;
-use std::io::{self, BufRead};
 use regex::Regex;
 
 fn pack(x: &i32, y: &i32) -> i64 {
@@ -137,7 +138,10 @@ fn pack(x: &i32, y: &i32) -> i64 {
 }
 
 fn main() {
-    let lines: Vec<String> = io::stdin().lock().lines().map(|s| s.unwrap()).collect();
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input = read_to_string(filename).unwrap();
+    let lines: Vec<String> = input.lines().map(|s| s.to_string()).collect();
     let max_x = 101;
     let max_y = 103;
 

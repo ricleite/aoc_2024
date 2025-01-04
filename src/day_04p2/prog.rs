@@ -71,10 +71,14 @@ In this example, an X-MAS appears 9 times.
 Flip the word search from the instructions back over to the word search side and try again. How many times does an X-MAS appear?
 */
 
+use std::env;
 use std::fs::read_to_string;
 
 fn main() {
-    let input = read_to_string("input").unwrap();
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input: String = read_to_string(filename).unwrap();
+ 
     let lines: Vec<&str> = input.lines().collect();
     let height = lines.len();
     let width = lines[0].len();

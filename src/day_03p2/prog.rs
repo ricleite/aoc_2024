@@ -41,11 +41,15 @@ This time, the sum of the results is 48 (2*4 + 8*5).
 Handle the new instructions; what do you get if you add up all of the results of just the enabled multiplications?
 */
 
+use std::env;
 use std::fs::read_to_string;
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input: String = read_to_string(filename).unwrap();
+ 
     // modified input to be a single line - easier to handle
-    let input = read_to_string("input").unwrap();
     let lines: Vec<&str> = input.lines().collect();
     assert!(lines.len() == 1);
 

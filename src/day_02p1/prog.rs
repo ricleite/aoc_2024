@@ -35,14 +35,19 @@ In the example above, the reports can be found safe or unsafe by checking those 
 So, in this example, 2 reports are safe.
 
 Analyze the unusual data from the engineers. How many reports are safe?
- */
+*/
 
+use std::env;
 use std::fs::read_to_string;
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input: String = read_to_string(filename).unwrap();
+ 
     let mut safe = 0;
 
-    for line in read_to_string("input").unwrap().lines() {
+    for line in input.lines() {
         let vs: Vec<&str> = line.split_whitespace().collect();
         let vi: Vec<i64> = vs.into_iter().map(|x| x.parse::<i64>().unwrap()).collect();
 

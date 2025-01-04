@@ -18,13 +18,18 @@ xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))
 Only the four highlighted sections are real mul instructions. Adding up the result of each instruction produces 161 (2*4 + 5*5 + 11*8 + 8*5).
 
 Scan the corrupted memory for uncorrupted mul instructions. What do you get if you add up all of the results of the multiplications?
- */
+*/
 
+use std::env;
 use std::fs::read_to_string;
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input: String = read_to_string(filename).unwrap();
+ 
     let mut sum = 0;
-    for line in read_to_string("input").unwrap().lines() {
+    for line in input.lines() {
         // should get an award for the absolute dumbest parsing ever
         // complete abuse of split() as a primitive
         for mul in line.split("mul(") {

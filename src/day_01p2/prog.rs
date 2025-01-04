@@ -74,15 +74,20 @@ So, for these example lists, the similarity score at the end of this process is 
 Once again consider your left and right lists. What is their similarity score?
 */
 
+use std::env;
 use std::fs::read_to_string;
 use std::collections::HashMap;
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input = read_to_string(filename).unwrap();
+
     let mut m: HashMap<i64, i64> = HashMap::new();
     let mut l = Vec::new();
 
     // https://doc.rust-lang.org/rust-by-example/std_misc/file/read_lines.html
-    for line in read_to_string("input").unwrap().lines() {
+    for line in input.lines() {
         let v: Vec<&str> = line.split_whitespace().collect();
 
         let a = v[0].parse::<i64>().unwrap();

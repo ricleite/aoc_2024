@@ -56,8 +56,9 @@ More of the above example's reports are now safe:
 Thanks to the Problem Dampener, 4 reports are actually safe!
 
 Update your analysis by handling situations where the Problem Dampener can remove a single level from unsafe reports. How many reports are now safe?
- */
+*/
 
+use std::env;
 use std::fs::read_to_string;
 
 fn safe_inc_impl(vi: &Vec<i64>, ignore_idx: usize) -> bool {
@@ -80,9 +81,13 @@ fn safe_inc(vi: &Vec<i64>) -> bool {
 }
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input: String = read_to_string(filename).unwrap();
+ 
     let mut safe = 0;
 
-    for line in read_to_string("input").unwrap().lines() {
+    for line in input.lines() {
         let vs: Vec<&str> = line.split_whitespace().collect();
         let vi: Vec<i64> = vs.into_iter().map(|x| x.parse::<i64>().unwrap()).collect();
         let vi_rev: Vec<i64> = vi.clone().into_iter().rev().collect();
