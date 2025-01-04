@@ -97,8 +97,54 @@ In this example, the guard will visit 41 distinct positions on your map.
 Predict the path of the guard. How many distinct positions will the guard visit before leaving the mapped area?
 */
 
+use std::env;
 use std::fs::read_to_string;
+use std::collections::BTreeSet;
 
 fn main() {
-    let input = read_to_string("input").unwrap();
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    let input = read_to_string(filename).unwrap();
+
+    let map: Vec<Vec<char>> = input.lines().map(|s| s.chars().collect()).collect();
+    let max_x = map.len();
+    let max_y = map.first().unwrap().len();
+
+    let (mut curr_x, mut curr_y) = (0, 0);
+    let (mut dx, mut dy) = (-1, 0);
+    for x in 0..max_x {
+        for y in 0..max_y {
+            if map[x][y] == '^' {
+                (curr_x, curr_y) = (x, y);
+                (dx, dy) = (-1, 0);
+            }
+        }
+    }
+
+    let mut pos: BTreeSet<(usize, usize)> = BTreeSet::new();
+
+    loop {
+        let (new_x, new_y) = ((curr_x as i32 + dx) as usize, (curr_y as i32 + dy) as usize);
+        if new_x >= max_x || new_y >= max_y {
+            break;
+        }
+
+        // oupsies cannot go there, turn 90o, then go at it again
+        if map[new_x][new_y] == '#' {
+            (dx, dy) = match (dx, dy) {
+                (1, 0) => (0, -1),
+                (0, 1) => (1, 0),
+                (-1, 0) => (0, 1),
+                (0, -1) => (-1, 0),
+                _ => panic!()
+            };
+
+            continue;
+        }
+
+        pos.insert((new_x, new_y));
+        (curr_x, curr_y) = (new_x, new_y);
+    }
+
+    println!("{}", pos.len());
 }
